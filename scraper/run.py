@@ -3,16 +3,15 @@ from __future__ import annotations
 import asyncio
 import sys
 
-from scraper.models import load_jobs, save_jobs
+from scraper.models import Job, load_jobs, save_jobs
 from scraper.sites import ALL_SCRAPERS
 from scraper.diff import compute_diff
+from scraper.detail_scraper import fetch_details_for_jobs
 from scraper.discord_notify import send_discord_notification
 from scraper.html_gen import generate_html
 
 
-async def scrape_all() -> list:
-    from scraper.models import Job
-
+async def scrape_all() -> list[Job]:
     all_jobs: list[Job] = []
     for scraper_fn in ALL_SCRAPERS:
         try:
@@ -37,6 +36,15 @@ def main():
     print("[main] Computing diff...")
     merged, diff = compute_diff(old_jobs, fresh_jobs)
     print(f"[main] New: {len(diff.new_jobs)}, Closed: {len(diff.closed_jobs)}, Active: {diff.total_active}")
+
+    needs_detail: list[Job] = []
+    for job in merged.values():
+        if not job.requirements and job.status == "open":
+            needs_detail.append(job)
+    if needs_detail:
+        print(f"[main] Fetching details for {len(needs_detail)} jobs without requirements...")
+        updated = asyncio.run(fetch_details_for_jobs(needs_detail))
+        print(f"[main] Got requirements for {updated} jobs")
 
     print("[main] Saving updated job data...")
     save_jobs(merged)

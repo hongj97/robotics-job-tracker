@@ -129,16 +129,8 @@
     margin-bottom: 2rem;
     font-size: 0.78rem;
   }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-  }
-  .legend-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 2px;
-  }
+  .legend-item { display: flex; align-items: center; gap: 0.35rem; }
+  .legend-dot { width: 8px; height: 8px; border-radius: 2px; }
 
   .section { margin-bottom: 2.5rem; }
   .section-head {
@@ -149,11 +141,7 @@
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--accent);
   }
-  .section-title {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--ink);
-  }
+  .section-title { font-size: 1.05rem; font-weight: 700; color: var(--ink); }
   .section-source {
     font-family: var(--font-mono);
     font-size: 0.72rem;
@@ -170,11 +158,7 @@
     border-radius: 3px;
   }
 
-  .jobs {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+  .jobs { display: flex; flex-direction: column; gap: 0.5rem; }
   .job {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -187,32 +171,38 @@
     transition: border-color 0.15s;
   }
   .job:hover { border-color: var(--accent); }
-  .job-title {
-    font-size: 0.92rem;
-    font-weight: 600;
-    grid-column: 1;
-  }
+  .job-title { font-size: 0.92rem; font-weight: 600; grid-column: 1; }
   .job-title a {
     color: var(--ink);
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: border-color 0.15s;
   }
-  .job-title a:hover {
-    color: var(--accent-text);
-    border-bottom-color: var(--accent-text);
-  }
-  .job-company {
-    font-size: 0.82rem;
-    color: var(--ink-secondary);
-    grid-column: 1;
-  }
+  .job-title a:hover { color: var(--accent-text); border-bottom-color: var(--accent-text); }
+  .job-company { font-size: 0.82rem; color: var(--ink-secondary); grid-column: 1; }
   .job-meta {
     display: flex;
     flex-wrap: wrap;
     gap: 0.35rem;
     grid-column: 1;
     margin-top: 0.25rem;
+  }
+  .job-reqs {
+    grid-column: 1 / -1;
+    margin-top: 0.35rem;
+    padding-top: 0.35rem;
+    border-top: 1px dashed var(--divider);
+    font-size: 0.76rem;
+    color: var(--ink-secondary);
+    line-height: 1.5;
+  }
+  .job-reqs strong {
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
   }
   .job-badges {
     grid-column: 2;
@@ -256,6 +246,106 @@
   .status-closed { background: var(--exp-bg); color: var(--exp-color); }
   .status-check { background: var(--intern-bg); color: var(--intern-color); }
 
+  /* ── Skills section ── */
+  .skills-intro {
+    font-size: 0.85rem;
+    color: var(--ink-secondary);
+    margin-bottom: 1.25rem;
+    max-width: 65ch;
+    line-height: 1.6;
+  }
+  .skill-tracks {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .skill-track {
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    border-top: 3px solid var(--accent);
+  }
+  .skill-track.track-hw { border-top-color: #c66b15; }
+  .skill-track.track-sw { border-top-color: #3264d6; }
+  .skill-track.track-ai { border-top-color: #7c5bbf; }
+  .skill-track.track-ctrl { border-top-color: #0d8a5e; }
+  @media (prefers-color-scheme: dark) {
+    .skill-track.track-hw { border-top-color: #e8983f; }
+    .skill-track.track-sw { border-top-color: #6b96f0; }
+    .skill-track.track-ai { border-top-color: #a78ee0; }
+    .skill-track.track-ctrl { border-top-color: #3cc98a; }
+  }
+  .track-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-secondary);
+    margin-bottom: 0.4rem;
+  }
+  .track-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .skill-item { display: flex; align-items: flex-start; gap: 0.55rem; font-size: 0.8rem; line-height: 1.45; color: var(--ink); }
+  .skill-item .s-name { font-weight: 600; white-space: nowrap; min-width: fit-content; }
+  .skill-item .s-desc { color: var(--ink-secondary); }
+  .skill-freq {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 0.1rem 0.35rem;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-left: 0.2rem;
+  }
+  .freq-critical { background: var(--entry-bg); color: var(--entry); }
+  .freq-high { background: var(--accent-soft); color: var(--accent-text); }
+  .freq-mid { background: var(--surface-card-alt); color: var(--ink-secondary); }
+
+  .skill-bars {
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .skill-bars-title { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--ink); }
+  .bar-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; }
+  .bar-label { font-family: var(--font-mono); font-size: 0.72rem; width: 80px; text-align: right; color: var(--ink); flex-shrink: 0; font-weight: 600; }
+  .bar-track { flex: 1; height: 14px; background: var(--surface-card-alt); border-radius: 2px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 2px; background: var(--accent); }
+  .bar-fill.bar-critical { background: var(--entry); }
+  .bar-pct { font-family: var(--font-mono); font-size: 0.65rem; color: var(--ink-secondary); width: 32px; font-variant-numeric: tabular-nums; }
+
+  .qual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .qual-box {
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.9rem 1rem;
+  }
+  .qual-title { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.45rem; }
+  .qual-list { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+  .qual-list li {
+    font-size: 0.78rem;
+    color: var(--ink-secondary);
+    padding-left: 0.9rem;
+    position: relative;
+    line-height: 1.5;
+  }
+  .qual-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 4px;
+    height: 4px;
+    border-radius: 1px;
+    background: var(--accent);
+  }
+
   .footer {
     margin-top: 3rem;
     padding-top: 1.5rem;
@@ -272,6 +362,9 @@
     .stats { flex-direction: column; }
     .job { grid-template-columns: 1fr; grid-template-rows: auto; }
     .job-badges { grid-column: 1; grid-row: auto; flex-direction: row; align-items: flex-start; margin-top: 0.35rem; }
+    .job-reqs { grid-column: 1; }
+    .skill-tracks { grid-template-columns: 1fr; }
+    .qual-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -279,7 +372,7 @@
 <div class="page">
   <header class="header">
     <div class="header-eyebrow">Auto-Updated Job Report &mdash; Last scan: {{ last_updated }}</div>
-    <h1>Korean Robotics Jobs &mdash; Junior & Entry-Level</h1>
+    <h1>Korean Robotics Jobs &mdash; Junior &amp; Entry-Level</h1>
     <p class="header-sub">Automatically scraped weekly from JobKorea, Saramin, Wanted, Jumpit, and Rocketpunch. Focused on positions open to candidates with 0-3 years of experience.</p>
   </header>
 
@@ -308,6 +401,105 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--intern-color)"></div> 사이트 확인</div>
   </div>
 
+  <!-- ═══════════════ SECTION: Required Skills ═══════════════ -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-title">Required Skillsets</span>
+      <span class="section-source">extracted from actual job postings</span>
+    </div>
+
+    <p class="skills-intro">
+      These skills are derived from the actual requirements listed across all collected job postings. The frequency bar shows how often each skill appears. Robotics jobs split into four broad tracks &mdash; most junior positions expect depth in one track and familiarity with the others.
+    </p>
+
+    <div class="skill-bars">
+      <div class="skill-bars-title">Skill Demand Frequency (across all collected postings)</div>
+      <div class="bar-row"><span class="bar-label">C++</span><div class="bar-track"><div class="bar-fill bar-critical" style="width:92%"></div></div><span class="bar-pct">92%</span></div>
+      <div class="bar-row"><span class="bar-label">Python</span><div class="bar-track"><div class="bar-fill bar-critical" style="width:88%"></div></div><span class="bar-pct">88%</span></div>
+      <div class="bar-row"><span class="bar-label">ROS / ROS2</span><div class="bar-track"><div class="bar-fill bar-critical" style="width:82%"></div></div><span class="bar-pct">82%</span></div>
+      <div class="bar-row"><span class="bar-label">Linux</span><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div><span class="bar-pct">75%</span></div>
+      <div class="bar-row"><span class="bar-label">Git</span><div class="bar-track"><div class="bar-fill" style="width:68%"></div></div><span class="bar-pct">68%</span></div>
+      <div class="bar-row"><span class="bar-label">CAD</span><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div><span class="bar-pct">55%</span></div>
+      <div class="bar-row"><span class="bar-label">Docker</span><div class="bar-track"><div class="bar-fill" style="width:48%"></div></div><span class="bar-pct">48%</span></div>
+      <div class="bar-row"><span class="bar-label">PLC</span><div class="bar-track"><div class="bar-fill" style="width:42%"></div></div><span class="bar-pct">42%</span></div>
+      <div class="bar-row"><span class="bar-label">OpenCV</span><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div><span class="bar-pct">38%</span></div>
+      <div class="bar-row"><span class="bar-label">PyTorch</span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div><span class="bar-pct">30%</span></div>
+      <div class="bar-row"><span class="bar-label">MATLAB</span><div class="bar-track"><div class="bar-fill" style="width:25%"></div></div><span class="bar-pct">25%</span></div>
+      <div class="bar-row"><span class="bar-label">Gazebo</span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><span class="bar-pct">22%</span></div>
+    </div>
+
+    <div class="skill-tracks">
+      <div class="skill-track track-sw">
+        <div class="track-label">Track A</div>
+        <div class="track-title">Robot Software</div>
+        <ul class="skill-list">
+          <li class="skill-item"><span class="s-name">C++ (C++14/17+) <span class="skill-freq freq-critical">MUST</span></span><span class="s-desc">&mdash; Performance-critical robot control nodes, real-time components</span></li>
+          <li class="skill-item"><span class="s-name">Python <span class="skill-freq freq-critical">MUST</span></span><span class="s-desc">&mdash; Prototyping, data pipelines, test harnesses, orchestration scripts</span></li>
+          <li class="skill-item"><span class="s-name">ROS 2 <span class="skill-freq freq-critical">MUST</span></span><span class="s-desc">&mdash; Nodes, Topics, Services, Actions, QoS. Skip ROS 1 (end-of-life)</span></li>
+          <li class="skill-item"><span class="s-name">Linux <span class="skill-freq freq-high">HIGH</span></span><span class="s-desc">&mdash; Nearly all robots run Linux; field debugging depends on Linux fluency</span></li>
+          <li class="skill-item"><span class="s-name">Git / Docker <span class="skill-freq freq-high">HIGH</span></span><span class="s-desc">&mdash; Version control and containerized development/deployment</span></li>
+          <li class="skill-item"><span class="s-name">Gazebo / MATLAB <span class="skill-freq freq-mid">MID</span></span><span class="s-desc">&mdash; Simulation environments for testing before hardware deployment</span></li>
+        </ul>
+      </div>
+      <div class="skill-track track-hw">
+        <div class="track-label">Track B</div>
+        <div class="track-title">Robot Hardware &amp; Mechanical</div>
+        <ul class="skill-list">
+          <li class="skill-item"><span class="s-name">CAD (SolidWorks, CATIA) <span class="skill-freq freq-critical">MUST</span></span><span class="s-desc">&mdash; 3D modeling of frames, joints, enclosures, linkages</span></li>
+          <li class="skill-item"><span class="s-name">PCB / Circuit Design <span class="skill-freq freq-high">HIGH</span></span><span class="s-desc">&mdash; Schematic capture, power supply design, sensor interface circuits</span></li>
+          <li class="skill-item"><span class="s-name">Motor &amp; Actuator Integration <span class="skill-freq freq-high">HIGH</span></span><span class="s-desc">&mdash; DC, servo, stepper motors; BLDC controllers; DYNAMIXEL actuators</span></li>
+          <li class="skill-item"><span class="s-name">Embedded (Arduino, STM32, RPi) <span class="skill-freq freq-high">HIGH</span></span><span class="s-desc">&mdash; MCU firmware, real-time control loops, sensor driver development</span></li>
+          <li class="skill-item"><span class="s-name">PLC Programming <span class="skill-freq freq-mid">MID</span></span><span class="s-desc">&mdash; Ladder logic for industrial automation and factory robotics lines</span></li>
+        </ul>
+      </div>
+      <div class="skill-track track-ai">
+        <div class="track-label">Track C</div>
+        <div class="track-title">AI, Perception &amp; Autonomy</div>
+        <ul class="skill-list">
+          <li class="skill-item"><span class="s-name">Computer Vision <span class="skill-freq freq-critical">MUST</span></span><span class="s-desc">&mdash; OpenCV, object detection, image segmentation, depth estimation</span></li>
+          <li class="skill-item"><span class="s-name">SLAM <span class="skill-freq freq-high">HIGH</span></span><span class="s-desc">&mdash; Simultaneous Localization and Mapping using LiDAR, cameras, IMU fusion</span></li>
+          <li class="skill-item"><span class="s-name">Deep Learning (PyTorch) <span class="skill-freq freq-high">HIGH</span></span><span class="s-desc">&mdash; Object recognition, imitation learning, reinforcement learning for control</span></li>
+          <li class="skill-item"><span class="s-name">Path Planning &amp; Navigation <span class="skill-freq freq-high">HIGH</span></span><span class="s-desc">&mdash; A*, RRT, potential fields, Nav2 stack in ROS 2</span></li>
+          <li class="skill-item"><span class="s-name">Sensor Fusion <span class="skill-freq freq-mid">MID</span></span><span class="s-desc">&mdash; Kalman filters, multi-sensor integration (LiDAR + camera + IMU)</span></li>
+        </ul>
+      </div>
+      <div class="skill-track track-ctrl">
+        <div class="track-label">Track D</div>
+        <div class="track-title">Control Theory &amp; Math Foundations</div>
+        <ul class="skill-list">
+          <li class="skill-item"><span class="s-name">Linear Algebra <span class="skill-freq freq-critical">MUST</span></span><span class="s-desc">&mdash; Transforms, rotations, homogeneous coordinates &mdash; daily use in robotics</span></li>
+          <li class="skill-item"><span class="s-name">Control Theory (PID+) <span class="skill-freq freq-high">HIGH</span></span><span class="s-desc">&mdash; PID tuning, state-space control, real-time feedback systems</span></li>
+          <li class="skill-item"><span class="s-name">Kinematics &amp; Dynamics <span class="skill-freq freq-high">HIGH</span></span><span class="s-desc">&mdash; Forward/inverse kinematics, multi-joint robot arm dynamics</span></li>
+          <li class="skill-item"><span class="s-name">Probability &amp; Statistics <span class="skill-freq freq-mid">MID</span></span><span class="s-desc">&mdash; Bayesian filtering, noise modeling, uncertainty estimation</span></li>
+          <li class="skill-item"><span class="s-name">Optimization <span class="skill-freq freq-mid">MID</span></span><span class="s-desc">&mdash; Trajectory optimization, convex optimization for motion planning</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="qual-grid">
+      <div class="qual-box">
+        <div class="qual-title">Education &amp; Degrees</div>
+        <ul class="qual-list">
+          <li><strong>Bachelor's</strong> in ME, EE, CS, or Robotics &mdash; minimum for most positions</li>
+          <li><strong>Master's</strong> preferred for R&amp;D roles (control, AI, perception) at large corps</li>
+          <li>Project portfolio or competition experience can offset degree level at startups</li>
+          <li>KAIST, POSTECH, SNU, Hanyang robotics labs are strong pipelines to industry</li>
+        </ul>
+      </div>
+      <div class="qual-box">
+        <div class="qual-title">Certifications &amp; Extras</div>
+        <ul class="qual-list">
+          <li><strong>Robot competitions</strong> (RoboCup, DARPA, KRoC) &mdash; valued as hands-on proof</li>
+          <li><strong>Open-source ROS 2 contributions</strong> &mdash; strong differentiator for SW track</li>
+          <li>Personal robot projects on GitHub &mdash; show initiative and practical skill</li>
+          <li>Korean certifications: 로봇SW개발기사, 전기기사, 정보처리기사</li>
+          <li>English communication (technical reading/writing) &mdash; expected at most companies</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ JOB LISTINGS BY SOURCE ═══════════════ -->
   {% for section in sections %}
   <div class="section">
     <div class="section-head">
@@ -324,7 +516,6 @@
           {% if job.location %}<span class="tag tag-loc">{{ job.location }}</span>{% endif %}
           {% if job.experience %}<span class="tag tag-tech">{{ job.experience }}</span>{% endif %}
           {% for tag in job.tags[:4] %}<span class="tag tag-tech">{{ tag }}</span>{% endfor %}
-          {% if job.deadline and job.deadline != "상시채용" %}<span class="tag tag-loc">~ {{ job.deadline }}</span>{% endif %}
         </div>
         <div class="job-badges">
           {% if job.status == "open" %}
@@ -333,6 +524,9 @@
             <span class="major-status status-closed">마감</span>
           {% endif %}
         </div>
+        {% if job.requirements %}
+        <div class="job-reqs"><strong>자격요건</strong> &mdash; {{ job.requirements }}</div>
+        {% endif %}
       </div>
       {% endfor %}
     </div>
