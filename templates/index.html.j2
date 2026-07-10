@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Korean Robotics Jobs — Auto-Updated</title>
+<style>
+  :root {
+    --ink: #1c2131;
+    --ink-secondary: #5a6178;
+    --surface: #f4f5f9;
+    --surface-card: #ffffff;
+    --surface-card-alt: #edf0f7;
+    --accent: #3264d6;
+    --accent-soft: #e4ecfb;
+    --accent-text: #2451b5;
+    --entry: #0d8a5e;
+    --entry-bg: #e3f5ed;
+    --exp-color: #8b8fa3;
+    --exp-bg: #f0f1f5;
+    --intern-color: #c66b15;
+    --intern-bg: #fef2e4;
+    --border: #dfe2ea;
+    --divider: #e8eaef;
+    --shadow: rgba(28, 33, 49, 0.06);
+    --radius: 6px;
+    --font-body: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'SF Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e2e4ec; --ink-secondary: #9498ad;
+      --surface: #12141e; --surface-card: #1a1d2b; --surface-card-alt: #222638;
+      --accent: #6b96f0; --accent-soft: #1e2a48; --accent-text: #8db0f7;
+      --entry: #3cc98a; --entry-bg: #142b22;
+      --exp-color: #7a7e92; --exp-bg: #232636;
+      --intern-color: #e8983f; --intern-bg: #2e2010;
+      --border: #2d3045; --divider: #282b3d; --shadow: rgba(0,0,0,0.25);
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-body); background: var(--surface); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 1120px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+  .header { margin-bottom: 2.5rem; }
+  .header-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 0.5rem; }
+  .header h1 { font-size: 1.75rem; font-weight: 700; line-height: 1.2; text-wrap: balance; margin-bottom: 0.5rem; }
+  .header-sub { font-size: 0.92rem; color: var(--ink-secondary); max-width: 60ch; }
+  .stats { display: flex; gap: 1px; background: var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 2.5rem; box-shadow: 0 1px 3px var(--shadow); }
+  .stat { flex: 1; background: var(--surface-card); padding: 0.9rem 1rem; text-align: center; }
+  .stat-num { font-family: var(--font-mono); font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent); }
+  .stat-label { font-size: 0.72rem; color: var(--ink-secondary); letter-spacing: 0.03em; margin-top: 0.15rem; }
+  .section { margin-bottom: 2.5rem; }
+  .section-head { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent); }
+  .section-title { font-size: 1.05rem; font-weight: 700; }
+  .section-count { margin-left: auto; font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-text); background: var(--accent-soft); padding: 0.15rem 0.5rem; border-radius: 3px; }
+  .jobs { display: flex; flex-direction: column; gap: 0.5rem; }
+  .job { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 1rem; background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.85rem 1rem; transition: border-color 0.15s; }
+  .job:hover { border-color: var(--accent); }
+  .job-title { font-size: 0.92rem; font-weight: 600; grid-column: 1; }
+  .job-title a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  .job-title a:hover { color: var(--accent-text); border-bottom-color: var(--accent-text); }
+  .job-company { font-size: 0.82rem; color: var(--ink-secondary); grid-column: 1; }
+  .job-meta { display: flex; flex-wrap: wrap; gap: 0.35rem; grid-column: 1; margin-top: 0.25rem; }
+  .job-badges { grid-column: 2; grid-row: 1 / 4; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 0.3rem; }
+  .tag { font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 3px; white-space: nowrap; font-family: var(--font-mono); }
+  .tag-loc { background: var(--surface-card-alt); color: var(--ink-secondary); }
+  .tag-tech { background: var(--accent-soft); color: var(--accent-text); }
+  .badge { font-size: 0.68rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 3px; white-space: nowrap; }
+  .status { display: inline-block; font-size: 0.68rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 3px; white-space: nowrap; }
+  .status-open { background: var(--entry-bg); color: var(--entry); }
+  .status-closed { background: var(--exp-bg); color: var(--exp-color); }
+  .footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--divider); font-size: 0.72rem; color: var(--ink-secondary); text-align: center; font-family: var(--font-mono); }
+  @media (max-width: 740px) {
+    .page { padding: 1.5rem 1rem 3rem; }
+    .header h1 { font-size: 1.35rem; }
+    .stats { flex-direction: column; }
+    .job { grid-template-columns: 1fr; }
+    .job-badges { grid-column: 1; flex-direction: row; margin-top: 0.35rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="header">
+    <div class="header-eyebrow">Auto-Updated Job Report &mdash; Last scan: {{ last_updated }}</div>
+    <h1>Korean Robotics Jobs Tracker</h1>
+    <p class="header-sub">Automatically scraped weekly from JobKorea, Saramin, Wanted, Jumpit, and Rocketpunch. Focused on robotics engineering positions.</p>
+  </header>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">{{ sources_count }}</div>
+      <div class="stat-label">Sites Scraped</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">{{ total_jobs }}</div>
+      <div class="stat-label">Total Tracked</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">{{ active_jobs }}</div>
+      <div class="stat-label">Currently Active</div>
+    </div>
+  </div>
+
+  {% for section in sections %}
+  <div class="section">
+    <div class="section-head">
+      <span class="section-title">{{ section.name }}</span>
+      <span class="section-count">{{ section.active }} active / {{ section.total }} total</span>
+    </div>
+    <div class="jobs">
+      {% for job in section.jobs %}
+      <div class="job">
+        <div class="job-title"><a href="{{ job.url }}" target="_blank" rel="noopener">{{ job.title }}</a></div>
+        <div class="job-company">{{ job.company }}{% if job.location %} &mdash; {{ job.location }}{% endif %}</div>
+        <div class="job-meta">
+          {% if job.location %}<span class="tag tag-loc">{{ job.location }}</span>{% endif %}
+          {% if job.experience %}<span class="tag tag-tech">{{ job.experience }}</span>{% endif %}
+          {% for tag in job.tags[:4] %}<span class="tag tag-tech">{{ tag }}</span>{% endfor %}
+        </div>
+        <div class="job-badges">
+          {% if job.status == "open" %}
+            <span class="status status-open">{% if job.deadline == "상시채용" %}상시채용{% else %}채용중{% endif %}</span>
+          {% else %}
+            <span class="status status-closed">마감{% if job.deadline %} ({{ job.deadline[:5] }}){% endif %}</span>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+
+  <footer class="footer">
+    Auto-generated {{ last_updated }} &mdash; github.com robotics-job-tracker &mdash; Updates every Monday 9AM KST
+  </footer>
+</div>
+</body>
+</html>
